@@ -1,3 +1,6 @@
+Jenkins root user command :
+sudo -i
+
 Jenkins Install Commands:
 
 sudo yum update –y
@@ -11,9 +14,11 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 
 
+Jenkins Signin Command :
+cat pathURL (ex : cat /var/lib/jenkins/secrets/initialAdminPassword)
 
-
-
+---------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 Tomcat Install Commands:
 
@@ -27,5 +32,12 @@ sed -i '59 a\</tomcat-users>' apache-tomcat-9.0.111/conf/tomcat-users.xml
 sed -i '56d' apache-tomcat-9.0.111/conf/tomcat-users.xml
 sed -i '21d' apache-tomcat-9.0.111/webapps/manager/META-INF/context.xml
 sed -i '22d' apache-tomcat-9.0.111/webapps/manager/META-INF/context.xml
-
 sh apache-tomcat-9.0.111/bin/startup.sh
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+To Automate websites directly without build in jenkins, give jenkins url in your git hub repository 
+steps:
+1. Github -> your repo -> settings -> webhooks -> Payload URL give - jenkinsurl:8080/github-webhook/ (ex: http://3.234.146.173:8080/github-webhook/) -> content (application/json)
+2. Jenkins -> Our pipine -> Configure -> Triggers -> click Github hook trigger for GITScm polling
